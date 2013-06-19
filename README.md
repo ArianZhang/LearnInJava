@@ -1,3 +1,3 @@
 ThinkInJava
 ===========
-these code come from the book 'Think in Java', I wrote some interesting code to here once I read the book.
+这里记录了Java学习过程中比较好的例子
