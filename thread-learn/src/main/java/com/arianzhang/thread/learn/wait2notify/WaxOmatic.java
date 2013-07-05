@@ -24,12 +24,12 @@ public class WaxOmatic {
     final static Logger logger = Logger.getLogger(WaxOmatic.class);
 
     public static void main(String[] args) throws InterruptedException {
-        Car car = new Car(); 
-        ExecutorService exec = Executors.newCachedThreadPool(); 
-        exec.execute(new WaxOff(car)); 
-        exec.execute(new WaxOn(car)); 
-        TimeUnit.SECONDS.sleep(5); // Run for a while... 
-        exec.shutdownNow(); // Interrupt all tasks 
+        Car car = new Car();
+        ExecutorService exec = Executors.newCachedThreadPool();
+        exec.execute(new WaxOff(car));
+        exec.execute(new WaxOn(car));
+        TimeUnit.SECONDS.sleep(5); // Run for a while...
+        exec.shutdownNow(); // Interrupt all tasks
     }
 }
 
@@ -104,15 +104,15 @@ class WaxOff implements Runnable {
      */
     @Override
     public void run() {
-        try{
-            while(!Thread.interrupted()){
-                car.waitForWaxing(); 
-                logger.info("Wax Off! "); 
-                TimeUnit.MILLISECONDS.sleep(200); 
+        try {
+            while (!Thread.interrupted()) {
+                car.waitForWaxing();
+                logger.info("Wax Off! ");
+                TimeUnit.MILLISECONDS.sleep(200);
                 car.buffed();
             }
-        }catch(InterruptedException e){
-            logger.warn("Exiting via interrupt",e);
+        } catch (InterruptedException e) {
+            logger.warn("Exiting via interrupt", e);
         }
         logger.info("Ending Wax Off task");
     }
